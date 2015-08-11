@@ -11,7 +11,7 @@ BUILD_ARCH=`grep "SYS_ARCH=" < ${BUILD_DIR}config.mak | awk -F= '{print $2}'`
 BUILD_ARCH=`echo $BUILD_ARCH | tr "[A-Z]" "[a-z]"`
 LAVF=`grep "HAVE_LAVF" < ${BUILD_DIR}config.h | awk '{print $3}'`
 if [ $LOCALVER \> 1 ] ; then
-    VER=`git rev-list origin/plain | sort | join config.git-hash - | wc -l | awk '{print $1}'`
+    VER=`git rev-list origin/master | sort | join config.git-hash - | wc -l | awk '{print $1}'`
     VER_DIFF=$(($LOCALVER-$VER))
     echo "#define X264_REV $VER"
     echo "#define X264_REV_DIFF $VER_DIFF"
